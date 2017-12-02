@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
+		
+		<bean name="student" class="com.javalec.di3.Student">
+			<constructor-arg value="김형국" />
+			<constructor-arg value="2" />
+			<constructor-arg>
+				<list>
+					<value>농구</value>
+					<value>여행</value>
+					<value>게임</value>
+				</list>
+			</constructor-arg>
+			<property name="height" value="177" />
+			<property name="weight" value="80" />
+		</bean>
+		
+		<bean name="studentInfo" class="com.javalec.di3.StudentInfo">
+			<property name="student">
+				<ref bean="student" />
+			</property>
+		</bean>
+
+</beans>
