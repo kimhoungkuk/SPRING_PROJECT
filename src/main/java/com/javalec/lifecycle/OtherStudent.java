@@ -3,6 +3,9 @@ package com.javalec.lifecycle;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy; 
 
+import org.springframework.beans.factory.DisposableBean;
+import org.springframework.beans.factory.InitializingBean;
+
 public class OtherStudent {
 	
 	private String name;
@@ -20,7 +23,7 @@ public class OtherStudent {
 	public int getAge() {
 		return age;
 	}
-
+	
 	@PostConstruct
 	public void initMethod(){
 		System.out.println("initMethod");
@@ -29,5 +32,5 @@ public class OtherStudent {
 	@PreDestroy
 	public void destoryMethod(){
 		System.out.println("initMethod");
-	}	
+	}
 }
