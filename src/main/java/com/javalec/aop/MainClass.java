@@ -11,7 +11,7 @@ public class MainClass {
 			student.getStudentInfo();
 			
 			Worker worker = ctx.getBean("worker",Worker.class);
-			worker.getWorkInfo();
+			worker.getWorkInfo(); 
 			
 			ctx.close();
 		}
