@@ -1,16 +1,19 @@
-package com.javalec.aop;
+package com.javalec.aopClass;
 
 import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.Around;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.annotation.Pointcut;
 
+@Aspect
 public class LogAop {
 	
-	/*
-	 * 	<aop:before> : 메소드 실행 전에 advice 실행
-	 *  <aop:after-returning> : 정상적으로 메소드 실행 후에 advice 실행
-	 *  <aop:after-throwing> : 메소드 실행중 exception 발생시 advice 실행
- 	 *  <aop:after> :메소드 실행중 execption 이 발생하여도 advice 실행
-	 *  <aop:around> : 메서드 실행 전/후 및 exception 발생시 advice 실행
-	 */
+	@Pointcut("within(com.javalec.aopClass.*)")
+	private void pointcutMethod(){
+	}
+	
+	@Around("pointcutMethod")
 	public Object loggerAop(ProceedingJoinPoint joinpoint) throws Throwable{
 		String signatureStr = joinpoint.getSignature().toShortString();
 		System.out.println( signatureStr + " is start");
@@ -25,5 +28,10 @@ public class LogAop {
 			System.out.println( signatureStr + " is finished");
 			System.out.println( signatureStr + " 경과시간 " + (et - st));
 		}
+	}
+	
+	@Before("within(com.javalec.aopClass.*)")
+	public void beforAdvice(){
+		System.out.println("AAAA");
 	}
 }
